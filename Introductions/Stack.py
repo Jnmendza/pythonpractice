@@ -2,6 +2,8 @@
 # - list
 # - collections.deque
 # - queue.LifoQueue
+# LIFO -- Last In First Out
+# O(1)
 
 # |  3 |
 # |  2 |
