@@ -1,111 +1,45 @@
-# Different Implementations
-# - list
-# - collections.deque
-# - queue.LifoQueue
-# LIFO -- Last In First Out
-# O(1)
+"""
+A stack is a data structure whose primary purpose is to store and
+return elements in Last In First Out order.
+1. Implement the Stack class using an array as the underlying storage structure.
+    Make sure the Stack test pass.
+2. Re-implement the Stack class, this time using the linked list implementation
+    as the underlying storage structure.
+    Make sure the Stack tests pass.
+3. What is the difference between using an array vs. a linked list when
+    implementing a Stack?
 
-# |  3 |
-# |  2 |
-# |  1 |
-# |  0 |
-
-# 2 main operations are push and pop
-# - Push - insert elements and the last element stays on top
-# - Pop - Takes away the element that is on top
-
-
-# Fast implementation is using deque
-
-from collections import deque
-
-stack = deque()
-
-
-# Implementation
-# - Stack class
-# - Push action
-# - Pop action
-# - Display function
-
-# Stack Class
+"""
 
 
 class Stack:
-    def __init__(self, size):
-        self.stack = []
-        self.size = size
+    def __init__(self):
+        self.size = 0
+        self.storage = []
 
-    def push(self, item):
-        if len(self.stack) == self.size:
-            print("Stack is full")
+    def __len__(self):
+        return self.size
 
-        else:
-            self.stack.append(item)
+    def push(self, value):
+        # add an element to the front of the array
+        self.size += 1
+        self.storage.insert(0, value)
 
     def pop(self):
-        result = -1
-        if self.stack == []:
-            print("Stack is empty")
-        else:
-            result = self.stack.pop()
-        return result
-
-    def display(self):
-        if self.stack == []:
-            print("Stack is empty")
-        else:
-            print("Stack data")
-            for item in reversed(self.stack):
-                print(item)
+        # check if empty
+        if len(self.storage) == 0:
+            return None
+        # remove the first element in storage
+        self.size -= 1
+        node = self.storage.pop(0)
+        return node
 
 
-exit = False
-stack = Stack(3)
-
-while not exit:
-    print("\nChoose an operation")
-    print("1) Push")
-    print("2) Pop")
-    print("3) Display")
-
-    operation = input()
-
-
-    def pushOp():
-        number = input("Insert a number:")
-        if number.isdigit():
-            global stack
-            stack.push(number)
-        else:
-            print("Invalid input...")
-
-
-    def popOp():
-        global stack
-        n = stack.pop()
-        if n != -1:
-            print(f"Deleted data: {n}")
-
-
-    def displayOp():
-        global stack
-        stack.display()
-
-
-    def exitOp():
-        global exit
-        exit = True
-        print("Exiting")
-
-
-    switch = {
-        "1": pushOp,
-        "2": popOp,
-        "3": displayOp
-    }
-
-    switch.get(operation, exitOp)()
-
-# Stack using Linked List
-
+new_stack = Stack()
+print(len(new_stack))
+new_stack.push(2)
+new_stack.push(3)
+new_stack.push(5)
+print(len(new_stack))
+print(new_stack.storage)
+new_stack.pop

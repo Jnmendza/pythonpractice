@@ -10,4 +10,10 @@
 # Questions to ask yourself:
 #   What's the opposite of FIFO? What data structure exhibit this ordering?
 #   What data structures would you use to implement a queue?
-#   When is FIFO ordering useful? When is it not
+#   When is FIFO ordering useful? When is it not?
+
+# Pros and Cons
+#   - Queues are simple and intuitive to use and implement
+#   - They can be used to serialize data coming in from multiple sources.
+#   - Are not general-purpose at all in and of themselves.
+
