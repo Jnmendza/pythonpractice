@@ -48,43 +48,46 @@ class BinarySearchTree:
     def contains(self, target):
         # compare target to root
         if target == self.value:
-            print(f"target {target} == self.value {self.value}")
             return True
         # if it's smaller, check left side
         elif target < self.value:
-            print(f"target {target} < self.value {self.value}")
             # first check that there is a left side; if not, return False
             if not self.left:
-                print("no self.left")
                 return False
             # else, if it doesn't match the left side, call contains on left side with same target
             elif target != self.left:
-                print(f"target {target} != self.left {self.left}")
                 return self.left.contains(target)
             else:
-                print(f"target {target} == self.left {self.left}")
                 return True
         # else, check right side
         elif target > self.value:
-            print(f"target {target} > self.value {self.value}")
             # first check that there is a right side; if not, return False
             if not self.right:
-                print("no self.right")
                 return False
             # else, if it doesn't match the right side, call contains on right side with same target
             elif target != self.right:
-                print(f"target {target} != self.right {self.right}")
                 return self.right.contains(target)
             else:
-                print(f"target {target} == self.right {self.right}")
                 return True
 
     # Return the maximum value found in the tree
     def get_mx(self):
-        pass
+        if not self:
+            return None
+        # if we can go right, go right
+        # return when we can't go right anymore
+        if not self.right:
+            return self.value
+        max_val = self.right.get_mx()
+        return max_val
 
     # Call the function 'cb' on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
 
