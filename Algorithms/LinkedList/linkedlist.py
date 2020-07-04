@@ -166,3 +166,18 @@ class LinkedList:
             s.next_node = p
 
         return new_head
+
+    def remove_dups(self):
+        curr= self.head
+        prev = None
+        dups = dict()
+        while curr:
+            if curr.value in dups:
+                # Remove node:
+                prev.next_node = curr.next_node
+                curr = None
+            else:
+                # Not seen element in dups yet
+                dups[curr.value] = 1
+                prev = curr
+            curr = prev.next_node
