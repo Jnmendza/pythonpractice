@@ -133,3 +133,36 @@ class LinkedList:
             return _reverse_recursive(curr, prev)
 
         self.head = _reverse_recursive(curr=self.head, prev=None)
+
+    def merge_two_sorted(self, llist):
+        p = self.head
+        q = llist.head
+        s = None
+
+        if p is None:
+            return q
+        if q is None:
+            return p
+
+        if p and q:
+            if p.value < q.value:
+                s = p
+                p = s.next_node
+            else:
+                s = q
+                q = s.next_node
+            new_head = s
+        while p and q:
+            if p.value <= q.value:
+                pass
+            else:
+                s.next_node = q
+                s = q
+                q = s.next_node
+
+        if not p:
+            s.next_node = q
+        if not q:
+            s.next_node = p
+
+        return new_head
