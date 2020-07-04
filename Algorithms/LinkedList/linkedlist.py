@@ -249,3 +249,20 @@ class LinkedList:
         #     p = p.next_node
         #     q = q.next_node
         # return p.value
+
+    def count_occur_iterative(self, value):
+        count = 0
+        curr = self.head
+        while curr:
+            if curr.value == value:
+                count += 1
+            curr = curr.next_node
+        return count
+
+    def count_occur_recursive(self, node, value):
+        if not node:
+            return 0
+        if node.value == value:
+            return 1 + self.count_occur_recursive(node.next_node, value)
+        else:
+            return self.count_occur_recursive(node.next_node, value)
