@@ -6,19 +6,19 @@ finish = "best the is This"
 """
 
 
-def reverse(str):
-    length = len(str) 
+def reverse(string):
+    length = len(string)
     spaces = [' ']
     words = []
     i = 0
     while i < length:
-        if str[i] not in spaces:
+        if string[i] not in spaces:
             word_start = i
-            while i < length and str[i] not in spaces:
+            while i < length and string[i] not in spaces:
                 i += 1
-            words.append(str[word_start:i])
+            words.append(string[word_start:i])
         i += 1
-    return " ".join(reversed(str))
+    return " ".join(reversed(string))
 
 
 print(reverse("This is the best"))
