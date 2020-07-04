@@ -20,6 +20,12 @@ class LinkedList:
 
         return output
 
+    def print_list(self):
+        curr_node = self.head
+        while curr_node:
+            print(curr_node.value)
+            curr_node = curr_node.next_node
+
     def add_to_head(self, value):
         # create a new node
         new_node = Node(value)
@@ -60,6 +66,25 @@ class LinkedList:
         head_value = self.head.value
         self.head = self.head.next_node
         return head_value
+
+    def remove_at_pos(self, pos):
+        curr = self.head
+        if pos == 0:
+            self.head = curr.next_node
+            curr = None
+            return
+        prev = None
+        count = 1
+        while curr and count != pos:
+            prev = curr
+            curr = curr.next_node
+            count += 1
+
+        if curr is None:
+            return
+
+        prev.next_node = curr.next_node
+        curr = None
 
     def contains(self, value):
         if self.head is None:
@@ -181,3 +206,46 @@ class LinkedList:
                 dups[curr.value] = 1
                 prev = curr
             curr = prev.next_node
+
+    def len_iterative(self):
+        count = 0
+        curr = self.head
+        while curr:
+            count += 1
+            curr = curr.next_node
+        return count
+
+    def len_recursive(self, node):
+        if node is None:
+            return 0
+        return 1 + self.len_recursive(node.next_node)
+
+    def nth_to_last_node(self, n):
+        # Method 1
+        total_len = self.len_iterative()
+        curr = self.head
+        while curr:
+            if total_len == n:
+                print(curr.value)
+                return curr
+            total_len -= 1
+            curr = curr.next_node
+
+        if curr is None:
+            return
+
+        # Method 2: two pointers
+        # p = self.head
+        # q = self.head
+        #
+        # count = 0
+        # while q and count < n:
+        #     q = q.next_node
+        #     count += 1
+        # if not q:
+        #     print( str(n) + "is greater than the number of nodes in list")
+        #
+        # while p and q:
+        #     p = p.next_node
+        #     q = q.next_node
+        # return p.value
