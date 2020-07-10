@@ -41,6 +41,21 @@ class DoublyLinkedList:
             print(cur.data)
             cur = cur.next
 
+    def add_after_node(self, key, data):
+        cur = self.head
+        while cur:
+            if cur.next is None and cur.data == key:
+                self.append(data)
+                return
+            elif cur.data == key:
+                new_node = Node(data)
+                nxt = cur.next
+                cur.next = new_node
+                new_node.next = nxt
+                new_node.prev = cur
+                nxt.prev = new_node
+            cur = cur.next
+
 
 dllist = DoublyLinkedList()
 dllist.prepend(0)
