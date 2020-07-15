@@ -16,22 +16,6 @@ def has_palindrome_permutation(the_string):
     return len(unpaired_characters) <= 1
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Tests
 
 class Test(unittest.TestCase):
